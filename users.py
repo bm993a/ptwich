@@ -1,6 +1,5 @@
 import query
 
-
 # authentication functions are not developed
 
 # REQUIRES AUTHENTICATION

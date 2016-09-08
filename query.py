@@ -1,13 +1,14 @@
-import urllib.request
-import json
+import requests
 
 _base_url = 'https://api.twitch.tv/kraken/'
 
-class Query:
-	def __init__(self, url_action):
-		self.url = _base_url + url_action
-		self.parameters = dict()
 
+
+class Query:
+	def __init__(self, action, url):
+		self.action = action.lower()
+		self.parameters = dict()
+		self.url = _base_url + url
 
 	# add parameters to the query
 	# parameter | dictionary of paramters and corresponding values
@@ -16,27 +17,30 @@ class Query:
 		for key, value in passed.items():
 			self.parameters[key] = value
 
-	# connect to the Twitch API with the desired query
 	def fetch(self):
 		# form the full url
 		to_submit = self.url + '?'
-
-		# base + ?, between + &
 		for key, value in self.parameters.items():
 			to_submit = to_submit + key + '=' + value + '&' 
 
-		print(to_submit)
+		if self.action == 'get':
+			response = requests.get(to_submit)
+		elif self.action == 'post':
+			response = requests.post(to_submit)
+		elif self.action == 'put':
+			response = requests.put(to_submit)
+		elif self.action == 'delete':
+			response = requests.delete(to_submit)	
 
-		# submit the url
-		response = urllib.request.urlopen(to_submit)
-		data = response.read().decode('utf-8')
-		data = json.loads(data)
+		# check for a failure
+		if response.status_code != requests.codes.ok:
+			pass
 
-		return data
+		return response.json()		
 
 
-def api(url, **kwargs):
-	q = Query(url)
+def api(action, url, **kwargs):
+	q = Query(action, url)
 
 	# process and add parameters
 	for key, value in kwargs.items():
@@ -45,5 +49,10 @@ def api(url, **kwargs):
 
 	data = q.fetch()
 	return data
+
+
+
+
+
 
 
