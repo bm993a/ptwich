@@ -75,6 +75,8 @@ def search_streams(**kwargs):
 	url = 'search/streams'
 	return query.q('get', url, **kwargs)
 
+# ****************************** subscriptions
+# AUTHENTICATION required API not implemented
 
 # ***************************** teams
 # find a list of team objects
