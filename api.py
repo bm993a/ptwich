@@ -11,6 +11,27 @@ import query
 # ****************************** blocks
 # AUTHENTICATION required API not implemented
 
+# ****************************** channels
+# AUTHENTICATION required API not implemented
+
+# alternate name for another method
+def channels_follows(channel, **kwargs):
+	return follows_channels(channel, **kwargs)
+
+# find information for a given channel
+def channels_info(channel):
+	url = 'channels/' + channel
+	return query.q('get', url)
+
+# find team objects a given belongs to
+def channels_teams(channel):
+	url = 'channels/' + channel + '/teams'
+	return query.q('get', url)
+
+# alternate name for another method
+def channels_videos(channel, **kwargs):
+	return videos_channe(channel, **kwargs)
+
 # ****************************** chat
 # get links to other chat endpoints
 def chat_channel(channel):
