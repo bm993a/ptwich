@@ -75,7 +75,7 @@ def search_streams(**kwargs):
 	url = 'search/streams'
 	return query.q('get', url, **kwargs)
 
-# ****************************** subscriptions
+# ***************************** subscriptions
 # AUTHENTICATION required API not implemented
 
 # ***************************** teams
@@ -88,8 +88,17 @@ def teams(**kwargs):
 def teams_info(team):
 	url = 'teams/' + team
 	return query.q('get', url)
+# ***************************** users
+# AUTHENTICATION required API not implemented
+
+# find information for given user
+def users_info(user):
+	url = 'users/' + user
+	return query.q('get' url)
 
 # ***************************** videos
+# AUTHENTICATION required API not implemented
+
 # find information for a particular video
 def videos(id):
 	url = 'videos/' + id
@@ -99,9 +108,6 @@ def videos(id):
 def videos_channel(channel, **kwargs):
 	url = 'channels/' + channel + 'videos'
 	return query.q('get', url, **kwargs)
-
-# AUTHENTICATION required API not implemented
-# GET /videos/followed	Get list of videos belonging to channels user is following
 
 # find the most viewed videos that meet criteria
 def videos_top(**kwargs):
