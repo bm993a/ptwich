@@ -74,6 +74,28 @@ def search_games(**kwargs):
 def search_streams(**kwargs):
 	url = 'search/streams'
 	return query.q('get', url, **kwargs)
+# ***************************** streams
+# AUTHENTICATION required API not implemented
+
+# find a list of streams with optional criteria
+def streams(**kwargs):
+	url = 'streams'
+	return query.q('get', url, **kwargs)
+
+# find a list of featured (promoted) streams
+def streams_featured(**kwargs):
+	url = 'streams/featured'
+	return query.q('get', url, **kwargs)
+
+# find information about a stream for a given channel, if it is online
+def streams_info(channel):
+	url = 'streams/' + channel
+	return query.q('get', url)
+	
+# find a summary of current streams or for a given game
+def streams_summary(**kwargs):
+	url = 'streams/summary'
+	return query.q('get', url, **kwargs)
 
 # ***************************** subscriptions
 # AUTHENTICATION required API not implemented
