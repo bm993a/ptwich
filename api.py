@@ -21,12 +21,12 @@ def channels_follows(channel, **kwargs):
 # find information for a given channel
 def channels_info(channel):
 	url = 'channels/' + channel
-	return query.q('get', url)
+	return query.api('get', url)
 
 # find team objects a given belongs to
 def channels_teams(channel):
 	url = 'channels/' + channel + '/teams'
-	return query.q('get', url)
+	return query.api('get', url)
 
 # alternate name for another method
 def channels_videos(channel, **kwargs):
@@ -65,7 +65,7 @@ def feed_channel(channel, **kwags):
 # AUTHENTICATION optional and not impleted
 # find a post for a given channel
 def feed_post_info(channel, id):
-	url = 'feed/' + channel + '/posts/ + id
+	url = 'feed/' + channel + '/posts/ + id'
 	return query.api('get', url)
 
 # ****************************** follows
@@ -111,39 +111,39 @@ def root():
 # find channels matching given criteria
 def search_channels(**kwargs):
 	url = 'search/channels'
-	return query.q('get', url, **kwargs)
+	return query.api('get', url, **kwargs)
 
 # find games matching given criteria
 def search_games(**kwargs):
 	url = 'search/games'
-	return query.q('get', url, **kwargs)	
+	return query.api('get', url, **kwargs)	
 
 # find streams matching given criteria
 def search_streams(**kwargs):
 	url = 'search/streams'
-	return query.q('get', url, **kwargs)
+	return query.api('get', url, **kwargs)
 # ***************************** streams
 # AUTHENTICATION required API not implemented
 
 # find a list of streams with optional criteria
 def streams(**kwargs):
 	url = 'streams'
-	return query.q('get', url, **kwargs)
+	return query.api('get', url, **kwargs)
 
 # find a list of featured (promoted) streams
 def streams_featured(**kwargs):
 	url = 'streams/featured'
-	return query.q('get', url, **kwargs)
+	return query.api('get', url, **kwargs)
 
 # find information about a stream for a given channel, if it is online
 def streams_info(channel):
 	url = 'streams/' + channel
-	return query.q('get', url)
+	return query.api('get', url)
 	
 # find a summary of current streams or for a given game
 def streams_summary(**kwargs):
 	url = 'streams/summary'
-	return query.q('get', url, **kwargs)
+	return query.api('get', url, **kwargs)
 
 # ***************************** subscriptions
 # AUTHENTICATION required API not implemented
@@ -152,19 +152,19 @@ def streams_summary(**kwargs):
 # find a list of team objects
 def teams(**kwargs):
 	url = 'teams'
-	return query.q('get', url)
+	return query.api('get', url)
 
 # find information for a given team objects
 def teams_info(team):
 	url = 'teams/' + team
-	return query.q('get', url)
+	return query.api('get', url)
 # ***************************** users
 # AUTHENTICATION required API not implemented
 
 # find information for given user
 def users_info(user):
 	url = 'users/' + user
-	return query.q('get' url)
+	return query.api('get', url)
 
 # ***************************** videos
 # AUTHENTICATION required API not implemented
@@ -172,17 +172,17 @@ def users_info(user):
 # find information for a particular video
 def videos(id):
 	url = 'videos/' + id
-	return query.q('get', url)
+	return query.api('get', url)
 
 # find the most viewed videos for a given channel that meet criteria
 def videos_channel(channel, **kwargs):
 	url = 'channels/' + channel + 'videos'
-	return query.q('get', url, **kwargs)
+	return query.api('get', url, **kwargs)
 
 # find the most viewed videos that meet criteria
 def videos_top(**kwargs):
 	url = 'videos/top'
-	return query.q('get', url, **kwargs)
+	return query.api('get', url, **kwargs)
 
 
 

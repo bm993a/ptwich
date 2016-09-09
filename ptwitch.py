@@ -1,19 +1,15 @@
 import argparse
-import channels
+import api
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='Twitch API via command line')
 
 
-#
-parser.add_argument('name')
-parser.add_argument('--channel', action='store_true')
+parser.add_argument('action', type=str, help='which api request to preform')
 
 
 
-#
-args = parser.parse_args()
+parser.parse_args()
 
-#
-if args.channel:
-	channel_list = channels.channel_info(args.name)
-	print(channel_list)
+# #
+# parser.add_argument('name')
+# parser.add_argument('--channel', action='store_true')

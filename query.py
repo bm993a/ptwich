@@ -34,7 +34,7 @@ class Query:
 
 		# check for a failure
 		if response.status_code != requests.codes.ok:
-			pass
+			return None
 
 		return response.json()		
 
