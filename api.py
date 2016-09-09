@@ -16,7 +16,7 @@ import query
 
 # alternate name for another method
 def channels_follows(channel, **kwargs):
-	return follows_channels(channel, **kwargs)
+	return follows_channel(channel, **kwargs)
 
 # find information for a given channel
 def channels_info(channel):
@@ -30,7 +30,7 @@ def channels_teams(channel):
 
 # alternate name for another method
 def channels_videos(channel, **kwargs):
-	return videos_channe(channel, **kwargs)
+	return videos_channel(channel, **kwargs)
 
 # ****************************** chat
 # get links to other chat endpoints
@@ -53,10 +53,58 @@ def chat_emoticons_images():
 	url = 'chat/emoticons_images'
 	return query.api('get', url)
 
+# ****************************** feeds
+# AUTHENTICATION required API not implemented
+
+# AUTHENTICATION optional and not impleted
+# find feed posts for a given channel
+def feed_channel(channel, **kwags):
+	url = 'feed/' + channel + '/posts'
+	return query.api('get', url)
+
+# AUTHENTICATION optional and not impleted
+# find a post for a given channel
+def feed_post_info(channel, id):
+	url = 'feed/' + channel + '/posts/ + id
+	return query.api('get', url)
+
+# ****************************** follows
+# AUTHENTICATION required API not implemented
+
+# find followers of a given channel
+def follows_channel(channel):
+	url = 'channels/' + channel + '/follows'
+	return query.api('get', url)
+
+# find if a user follows a given channel | provide extra info if the user does
+def follows_user_channel(user, channel):
+	url = 'users/' + user + '/follows/channels/' + channel
+	return query.api('get', url)
+
+# find a list of channels a user follows
+def follows_user(user, **kwargs):
+	url = 'users/' + user + '/follows/channels'
+	return query.api('get', url)
+
+# ****************************** games
+
+# find games based on the number of viewers
+def games_top(**kwargs):
+	url = 'games/top'
+	return query.api('get', url, **kwargs)
+
 # ****************************** ingests
 # find a list of all ingests
 def ingests():
 	url = 'ingests'
+	return query.api('get', url)
+
+# ***************************** root
+
+# AUTHENTICATION optional and not impleted
+# find information about the API and authentication status
+def root():
+	url = ''
 	return query.api('get', url)
 
 # ****************************** search
